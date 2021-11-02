@@ -1,0 +1,66 @@
+.header {
+  display: flex;
+  height: 60px;
+  padding: 0 48px;
+  align-items: center;
+  background: linear-gradient(to top, #3498db, 20%, rgb(56, 125, 190));
+}
+
+.create-event-btn {
+  padding: 0 16px;
+  border: 2px solid #2a72a1;
+  color: #fff;
+  box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+    color: rgb(52, 54, 184);
+  }
+  &:active {
+    background-color: #3d9bdaef;
+  }
+
+  &__icon {
+    margin-right: 8px;
+  }
+}
+
+.navigation {
+  &__today-btn {
+    margin-left: 32px;
+    padding: 0 16px;
+    border: 2px solid #2a72a1;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+
+    &:hover {
+      box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+      color: rgb(52, 54, 184);
+    }
+
+    &:active {
+      background-color: #3d9bdaef;
+    }
+  }
+
+  &__nav-icon {
+    font-size: 18px;
+    margin-left: 20px;
+    color: rgba(255, 255, 255, 0.87);
+
+    &:hover {
+      color: #1c4f80;
+      font-size: 20px;
+    }
+  }
+
+  &__displayed-month {
+    margin-left: 10px;
+    color: rgba(255, 255, 255, 0.87);
+    font-weight: bold;
+  }
+}
