@@ -2,8 +2,8 @@ import React from 'react';
 
 import './modal.scss';
 
-const Modal = ({ showModal, onHideModal }) => (
-  <div className={showModal ? 'modal overlay' : 'hidden'}>
+const Modal = ({ isModalVisible, onHideModal }) => (
+  <div className={isModalVisible ? 'modal overlay' : 'hidden'}>
     <div className="modal__content">
       <div className="create-event">
         <button onClick={onHideModal} className="create-event__close-btn">

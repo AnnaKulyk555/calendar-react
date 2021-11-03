@@ -9,46 +9,29 @@ import { getWeekStartDate, generateWeekRange } from './utils/dateUtils.js';
 import './common.scss';
 
 const App = () => {
-  const [weekStart, setWeekStart] = useState({
-    weekStartDate: moment().toDate(),
-  });
-  const [modalStatus, setModalStatus] = useState({
-    showModal: false,
-  });
-
-  const { weekStartDate } = weekStart;
-  const { showModal } = modalStatus;
+  const [weekStartDate, setWeekStartDate] = useState(moment().toDate());
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const goNextWeek = () => {
     const nextWeekStart = moment(weekStartDate).add(7, 'days');
-    setWeekStart({
-      weekStartDate: nextWeekStart.toDate(),
-    });
+    setWeekStartDate(nextWeekStart.toDate());
   };
 
   const goPrevWeek = () => {
     const nextWeekStart = moment(weekStartDate).subtract(7, 'days');
-    setWeekStart({
-      weekStartDate: nextWeekStart.toDate(),
-    });
+    setWeekStartDate(nextWeekStart.toDate());
   };
 
   const goCurrentWeek = () => {
-    setWeekStart({
-      weekStartDate: moment().toDate(),
-    });
+    setWeekStartDate(moment().toDate());
   };
 
   const showModalHandler = () => {
-    setModalStatus({
-      showModal: true,
-    });
+    setModalVisible(true);
   };
 
   const hideModalHandler = () => {
-    setModalStatus({
-      showModal: false,
-    });
+    setModalVisible(false);
   };
 
   const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
@@ -62,7 +45,7 @@ const App = () => {
         goCurrentWeek={goCurrentWeek}
         onShowModal={showModalHandler}
       />
-      <Modal showModal={showModal} onHideModal={hideModalHandler} />
+      <Modal isModalVisible={isModalVisible} onHideModal={hideModalHandler} />
       <Calendar weekDates={weekDates} />
     </>
   );
