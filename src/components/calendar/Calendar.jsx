@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Navigation from '../navigation/Navigation';
 import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
-import events from '../../gateway/events';
+import Modal from '../modal/Modal';
+
+import eventsData, { addEvent } from '../../gateway/eventsData';
 
 import './calendar.scss';
 
-const Calendar = ({ weekDates }) => {
-  const [state] = useState({
-    events,
-  });
+const Calendar = ({ weekDates, isModalVisible, onHideModal }) => {
+  const [calendarEvents, setCalendarEvents] = useState(eventsData);
+
+  useEffect(() => {
+    setCalendarEvents(eventsData);
+  }, eventsData);
+
+  const createEventHandler = calendarEvent => {
+    addEvent(calendarEvent);
+  };
 
   return (
     <section className="calendar">
@@ -18,9 +26,14 @@ const Calendar = ({ weekDates }) => {
       <div className="calendar__body">
         <div className="calendar__week-container">
           <Sidebar />
-          <Week weekDates={weekDates} events={state.events} />
+          <Week weekDates={weekDates} calendarEvents={calendarEvents} />
         </div>
       </div>
+      <Modal
+        isModalVisible={isModalVisible}
+        onHideModal={onHideModal}
+        onCreateEvent={createEventHandler}
+      />
     </section>
   );
 };

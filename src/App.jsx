@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import moment from 'moment';
 import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
-import Modal from './components/modal/Modal.jsx';
 
 import { getWeekStartDate, generateWeekRange } from './utils/dateUtils.js';
 
@@ -45,8 +44,11 @@ const App = () => {
         goCurrentWeek={goCurrentWeek}
         onShowModal={showModalHandler}
       />
-      <Modal isModalVisible={isModalVisible} onHideModal={hideModalHandler} />
-      <Calendar weekDates={weekDates} />
+      <Calendar
+        weekDates={weekDates}
+        isModalVisible={isModalVisible}
+        onHideModal={hideModalHandler}
+      />
     </>
   );
 };

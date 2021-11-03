@@ -1,4 +1,4 @@
-const events = [
+const eventsData = [
   {
     id: 1,
     title: 'Go to the gym',
@@ -36,4 +36,15 @@ const events = [
   },
 ];
 
-export default events;
+export const addEvent = event => {
+  const { date, description, endTime, startTime, title } = event;
+  eventsData.push({
+    id: Math.random(),
+    title,
+    description,
+    dateFrom: new Date(`${date} ${startTime}`),
+    dateTo: new Date(`${date} ${endTime}`),
+  });
+};
+
+export default eventsData;
