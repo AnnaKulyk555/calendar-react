@@ -36,19 +36,4 @@ const eventsData = [
   },
 ];
 
-export const addEvent = event => {
-  const { date, description, endTime, startTime, title } = event;
-  eventsData.push({
-    id: Math.random(),
-    title,
-    description,
-    dateFrom: new Date(`${date} ${startTime}`),
-    dateTo: new Date(`${date} ${endTime}`),
-  });
-};
-
-export const deleteEvent = id => {
-  eventsData.splice(id - 1);
-};
-
 export default eventsData;

@@ -3,13 +3,15 @@ import React, { useState } from 'react';
 import './modal.scss';
 
 const Modal = ({ isModalVisible, onHideModal, onCreateEvent }) => {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     title: '',
     date: '',
     startTime: '',
     endTime: '',
     description: '',
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -23,6 +25,7 @@ const Modal = ({ isModalVisible, onHideModal, onCreateEvent }) => {
   const handleSubmit = e => {
     e.preventDefault();
     onCreateEvent(formData);
+    setFormData(initialFormData);
   };
 
   return (
@@ -38,6 +41,7 @@ const Modal = ({ isModalVisible, onHideModal, onCreateEvent }) => {
               name="title"
               placeholder="Title"
               className="event-form__field"
+              value={formData.title}
               onChange={handleChange}
             />
             <div className="event-form__time">
@@ -45,12 +49,14 @@ const Modal = ({ isModalVisible, onHideModal, onCreateEvent }) => {
                 type="date"
                 name="date"
                 className="event-form__field"
+                value={formData.date}
                 onChange={handleChange}
               />
               <input
                 type="time"
                 name="startTime"
                 className="event-form__field"
+                value={formData.startTime}
                 onChange={handleChange}
               />
               <span>-</span>
@@ -58,6 +64,7 @@ const Modal = ({ isModalVisible, onHideModal, onCreateEvent }) => {
                 type="time"
                 name="endTime"
                 className="event-form__field"
+                value={formData.endTime}
                 onChange={handleChange}
               />
             </div>
@@ -65,6 +72,7 @@ const Modal = ({ isModalVisible, onHideModal, onCreateEvent }) => {
               name="description"
               placeholder="Description"
               className="event-form__field"
+              value={formData.description}
               onChange={handleChange}
             ></textarea>
             <button type="submit" className="event-form__submit-btn">

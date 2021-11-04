@@ -24,11 +24,12 @@ const Event = ({ height, marginTop, title, time, id, onDeleteEvent }) => {
         <div className="event__title">{title}</div>
         <div className="event__time">{time}</div>
       </div>
-      {isVisibleBtn ? (
-        <button onClick={deleteEventHandler} className="delete-event-btn">
-          <i className="fas fa-trash delete-event-btn_icon"></i>
-        </button>
-      ) : null}
+      <button
+        onClick={deleteEventHandler}
+        className={!isVisibleBtn ? 'hidden' : 'delete-event-btn'}
+      >
+        <i className="fas fa-trash delete-event-btn_icon"></i>
+      </button>
     </div>
   );
 };
