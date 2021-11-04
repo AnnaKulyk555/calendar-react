@@ -7,5 +7,13 @@
     height: 59px;
     position: relative;
     border-bottom: 1px solid #eee;
+
+    &-minute {
+      display: block;
+      position: relative;
+      z-index: 3;
+      height: 1px;
+      background-color: red;
+    }
   }
 }

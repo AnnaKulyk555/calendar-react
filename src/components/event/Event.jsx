@@ -19,7 +19,7 @@ const Event = ({ height, marginTop, title, time, id, onDeleteEvent }) => {
   };
 
   return (
-    <div className="test">
+    <div className="event-wrapper">
       <div onClick={eventClickHandler} style={eventStyle} className="event">
         <div className="event__title">{title}</div>
         <div className="event__time">{time}</div>
