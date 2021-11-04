@@ -47,4 +47,8 @@ export const addEvent = event => {
   });
 };
 
+export const deleteEvent = id => {
+  eventsData.splice(id - 1);
+};
+
 export default eventsData;

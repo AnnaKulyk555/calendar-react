@@ -3,7 +3,7 @@ import Day from '../day/Day';
 
 import './week.scss';
 
-const Week = ({ weekDates, calendarEvents }) => (
+const Week = ({ weekDates, calendarEvents, onDeleteEvent }) => (
   <div className="calendar__week">
     {weekDates.map(dayStart => {
       const dayEnd = new Date(dayStart.getTime()).setHours(dayStart.getHours() + 24);
@@ -13,7 +13,14 @@ const Week = ({ weekDates, calendarEvents }) => (
         event => event.dateFrom > dayStart && event.dateTo < dayEnd,
       );
 
-      return <Day key={dayStart.getDate()} dataDay={dayStart.getDate()} dayEvents={dayEvents} />;
+      return (
+        <Day
+          key={dayStart.getDate()}
+          dataDay={dayStart.getDate()}
+          dayEvents={dayEvents}
+          onDeleteEvent={onDeleteEvent}
+        />
+      );
     })}
   </div>
 );

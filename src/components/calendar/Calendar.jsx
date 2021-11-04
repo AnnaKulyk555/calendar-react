@@ -5,7 +5,7 @@ import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
 import Modal from '../modal/Modal';
 
-import eventsData, { addEvent } from '../../gateway/eventsData';
+import eventsData, { addEvent, deleteEvent } from '../../gateway/eventsData';
 
 import './calendar.scss';
 
@@ -14,10 +14,15 @@ const Calendar = ({ weekDates, isModalVisible, onHideModal }) => {
 
   useEffect(() => {
     setCalendarEvents(eventsData);
-  }, eventsData);
+    console.log(eventsData);
+  }, [eventsData]);
 
   const createEventHandler = calendarEvent => {
     addEvent(calendarEvent);
+  };
+
+  const deleteEventHandler = id => {
+    deleteEvent(id);
   };
 
   return (
@@ -26,7 +31,11 @@ const Calendar = ({ weekDates, isModalVisible, onHideModal }) => {
       <div className="calendar__body">
         <div className="calendar__week-container">
           <Sidebar />
-          <Week weekDates={weekDates} calendarEvents={calendarEvents} />
+          <Week
+            weekDates={weekDates}
+            calendarEvents={calendarEvents}
+            onDeleteEvent={deleteEventHandler}
+          />
         </div>
       </div>
       <Modal
