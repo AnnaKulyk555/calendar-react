@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import moment from 'moment';
+import React from 'react';
 
 import Event from '../event/Event';
 import { formatMins } from '../../utils/dateUtils.js';
 
 import './hour.scss';
 
-const Hour = ({ dataDay, dataHour, hourEvents, onDeleteEvent }) => {
-  const [minutes, setMinutes] = useState(Number(moment().format('mm')));
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     setMinutes(minutes + 1);
-  //     console.log(minutes);
-  //   }, 60000);
-  // }, [moment().format('mm')]);
-
-  const isCurrentHour =
-    moment(`${dataDay} ${dataHour}`, 'D H').format('D H') === moment().format('D H');
-
+const Hour = ({ dataHour, hourEvents, onDeleteEvent, isCurrentHour, minutes }) => {
   const minuteStyle = {
     top: minutes,
   };
