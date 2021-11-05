@@ -1,37 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Navigation from '../navigation/Navigation';
 import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
 import Modal from '../modal/Modal';
 
-import eventsData from '../../gateway/eventsData';
+import { fetchEventsData, createEvent, deleteEvent } from '../../gateway/eventsGateway';
 
 import './calendar.scss';
 
 const Calendar = ({ weekDates, isModalVisible, onHideModal }) => {
-  const [calendarEvents, setCalendarEvents] = useState(eventsData);
+  const [calendarEvents, setCalendarEvents] = useState([]);
+
+  const fetchEvents = () => {
+    fetchEventsData().then(events => {
+      setCalendarEvents(events);
+    });
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
   const createEventHandler = calendarEvent => {
     const { date, description, endTime, startTime, title } = calendarEvent;
-    setCalendarEvents([
-      ...calendarEvents,
-      {
-        id: Math.random(),
-        title,
-        description,
-        dateFrom: new Date(`${date} ${startTime}`),
-        dateTo: new Date(`${date} ${endTime}`),
-      },
-    ]);
+    createEvent({
+      title,
+      description,
+      dateFrom: new Date(`${date} ${startTime}`),
+      dateTo: new Date(`${date} ${endTime}`),
+    }).then(() => fetchEvents());
     onHideModal();
   };
 
-  const deleteEventHandler = id => {
-    setCalendarEvents(() => {
-      const newEventsData = calendarEvents.filter(event => event.id !== id);
-      return newEventsData;
-    });
+  const deleteEventHandler = eventId => {
+    deleteEvent(eventId).then(() => fetchEvents());
   };
 
   return (

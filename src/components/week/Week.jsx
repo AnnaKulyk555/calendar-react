@@ -11,7 +11,7 @@ const Week = ({ weekDates, calendarEvents, onDeleteEvent }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setMinutes(getNextMinute());
-    }, 60000);
+    }, 1000);
 
     return () => {
       clearInterval(interval);
