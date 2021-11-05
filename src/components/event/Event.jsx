@@ -11,7 +11,7 @@ const Event = ({ height, marginTop, title, time, id, onDeleteEvent }) => {
   };
 
   const eventClickHandler = () => {
-    setVisibleBtn(true);
+    setVisibleBtn(!isVisibleBtn);
   };
 
   const deleteEventHandler = () => {

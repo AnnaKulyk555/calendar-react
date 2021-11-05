@@ -6,6 +6,7 @@
   border-radius: 8px;
   padding: 8px;
   color: #fff;
+  cursor: pointer;
 
   &__title {
     width: 100%;
@@ -17,23 +18,25 @@
 
   &:hover {
     font-weight: bold;
-    background-color: red;
+    background-color: rgb(179, 202, 243);
   }
 }
 
 .delete-event-btn {
   position: absolute;
-  bottom: 25%;
-  left: 50px;
-  width: 50px;
+  bottom: -25px;
+  right: -25%;
+  width: 70%;
   height: 40px;
-  background-color: rgb(205, 223, 255);
+  background-color: rgb(247, 250, 255);
   cursor: pointer;
   border: 1px solid rgba(89, 91, 92, 0.301);
   border-radius: 5px;
 
   &_icon {
-    margin: auto;
-    color: rgb(204, 13, 13);
+    position: absolute;
+    left: 10%;
+    bottom: 25%;
+    color: rgb(153, 13, 13);
   }
 }
