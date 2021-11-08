@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import Navigation from '../navigation/Navigation';
 import Week from '../week/Week';
@@ -59,6 +60,12 @@ const Calendar = ({ weekDates, isModalVisible, onHideModal }) => {
       />
     </section>
   );
+};
+
+Calendar.propTypes = {
+  weekDates: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isModalVisible: PropTypes.bool.isRequired,
+  onHideModal: PropTypes.func.isRequired,
 };
 
 export default Calendar;

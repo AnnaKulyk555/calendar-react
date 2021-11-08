@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import moment from 'moment';
+
 import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 
@@ -12,13 +13,13 @@ const App = () => {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const goNextWeek = () => {
-    const nextWeekStart = moment(weekStartDate).add(7, 'days');
-    setWeekStartDate(nextWeekStart.toDate());
+    const nextWeekStart = moment(weekStartDate).add(7, 'days').toDate();
+    setWeekStartDate(nextWeekStart);
   };
 
   const goPrevWeek = () => {
-    const nextWeekStart = moment(weekStartDate).subtract(7, 'days');
-    setWeekStartDate(nextWeekStart.toDate());
+    const nextWeekStart = moment(weekStartDate).subtract(7, 'days').toDate();
+    setWeekStartDate(nextWeekStart);
   };
 
   const goCurrentWeek = () => {

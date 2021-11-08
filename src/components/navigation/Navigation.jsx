@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes, { arrayOf } from 'prop-types';
 
 import { days } from '../../utils/dateUtils.js';
 
@@ -12,5 +13,9 @@ const Navigation = ({ weekDates }) => (
     ))}
   </header>
 );
+
+Navigation.propTypes = {
+  weekDates: arrayOf(PropTypes.object).isRequired,
+};
 
 export default Navigation;

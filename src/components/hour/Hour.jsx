@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import Event from '../event/Event';
 import { formatMins } from '../../utils/dateUtils.js';
 
 import './hour.scss';
 
-const Hour = ({ dataHour, hourEvents, onDeleteEvent, isCurrentHour, minutes }) => {
+const Hour = ({ dataHour, hourEvents, onDeleteEvent, isCurrentHour }) => {
+  const [minutes, setMinutes] = useState(new Date().getMinutes());
+
+  const getNextMinute = () => new Date().getMinutes();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMinutes(getNextMinute());
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   const minuteStyle = {
     top: minutes,
   };
@@ -35,6 +50,17 @@ const Hour = ({ dataHour, hourEvents, onDeleteEvent, isCurrentHour, minutes }) =
       })}
     </div>
   );
+};
+
+Hour.propTypes = {
+  dataHour: PropTypes.number,
+  hourEvents: PropTypes.arrayOf(PropTypes.object),
+  onDeleteEvent: PropTypes.func.isRequired,
+  isCurrentHour: PropTypes.bool,
+};
+
+Hour.defaultProps = {
+  hourEvents: [],
 };
 
 export default Hour;

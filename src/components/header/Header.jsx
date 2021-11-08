@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 
 import { months } from '../../utils/dateUtils.js';
 
@@ -32,5 +33,13 @@ const Header = ({ weekStartDate, goNextWeek, goPrevWeek, goCurrentWeek, onShowMo
     </div>
   </header>
 );
+
+Header.propTypes = {
+  weekStartDate: PropTypes.object.isRequired,
+  goNextWeek: PropTypes.func.isRequired,
+  goPrevWeek: PropTypes.func.isRequired,
+  goCurrentWeek: PropTypes.func.isRequired,
+  onShowModal: PropTypes.func.isRequired,
+};
 
 export default Header;

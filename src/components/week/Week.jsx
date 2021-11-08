@@ -1,45 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import moment from 'moment';
+import PropTypes from 'prop-types';
+
 import Day from '../day/Day';
 
 import './week.scss';
 
-const Week = ({ weekDates, calendarEvents, onDeleteEvent }) => {
-  const [minutes, setMinutes] = useState(new Date().getMinutes());
+const Week = ({ weekDates, calendarEvents, onDeleteEvent }) => (
+  <div className="calendar__week">
+    {weekDates.map(dayStart => {
+      const dayEnd = moment(dayStart).endOf('day').toDate();
 
-  const getNextMinute = () => new Date().getMinutes();
+      // getting all events from the day we will render
+      const dayEvents = calendarEvents.filter(
+        event => event.dateFrom > dayStart && event.dateTo < dayEnd,
+      );
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setMinutes(getNextMinute());
-    }, 1000);
+      return (
+        <Day
+          key={dayStart.getDate()}
+          dataDay={dayStart.getDate()}
+          dayEvents={dayEvents}
+          onDeleteEvent={onDeleteEvent}
+        />
+      );
+    })}
+  </div>
+);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+Week.propTypes = {
+  weekDates: PropTypes.arrayOf(PropTypes.object).isRequired,
+  calendarEvents: PropTypes.arrayOf(PropTypes.object),
+  onDeleteEvent: PropTypes.func.isRequired,
+};
 
-  return (
-    <div className="calendar__week">
-      {weekDates.map(dayStart => {
-        const dayEnd = new Date(dayStart.getTime()).setHours(dayStart.getHours() + 24);
-
-        // getting all events from the day we will render
-        const dayEvents = calendarEvents.filter(
-          event => event.dateFrom > dayStart && event.dateTo < dayEnd,
-        );
-
-        return (
-          <Day
-            key={dayStart.getDate()}
-            dataDay={dayStart.getDate()}
-            dayEvents={dayEvents}
-            onDeleteEvent={onDeleteEvent}
-            minutes={minutes}
-          />
-        );
-      })}
-    </div>
-  );
+Week.defaultProps = {
+  calendarEvents: [],
 };
 
 export default Week;

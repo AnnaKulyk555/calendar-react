@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import './modal.scss';
 
@@ -83,6 +84,12 @@ const Modal = ({ isModalVisible, onHideModal, onCreateEvent }) => {
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  isModalVisible: PropTypes.bool.isRequired,
+  onHideModal: PropTypes.func.isRequired,
+  onCreateEvent: PropTypes.func.isRequired,
 };
 
 export default Modal;
