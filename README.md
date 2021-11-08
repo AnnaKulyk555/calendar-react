@@ -9,13 +9,14 @@ ES6
 
 React
 
+mockAPI
+
 Babel
 
-Webpack for bundling
+Webpack
 
-ESLint to maintain a consistent code style
+ESLint 
 
-style-loader, sass-loader and less-loader to allow import of stylesheets in plain css, sass and less
 
 HTML5
 
