@@ -3,9 +3,10 @@ const baseUrl = 'https://6151af974a5f22001701d380.mockapi.io/p1/events';
 export const fetchEventsData = () =>
   fetch(baseUrl)
     .then(res => {
-      if (res.ok) {
-        return res.json();
+      if (!res.ok) {
+        throw new Error("Internal Server Error. Can't display events");
       }
+      return res.json();
     })
     .then(eventsList =>
       eventsList.map(({ dateFrom, dateTo, ...task }) => ({

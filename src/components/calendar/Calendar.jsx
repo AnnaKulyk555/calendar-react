@@ -13,9 +13,11 @@ const Calendar = ({ weekDates, isModalVisible, onHideModal }) => {
   const [calendarEvents, setCalendarEvents] = useState([]);
 
   const fetchEvents = () => {
-    fetchEventsData().then(events => {
-      setCalendarEvents(events);
-    });
+    fetchEventsData()
+      .then(events => {
+        setCalendarEvents(events);
+      })
+      .catch(error => alert(error));
   };
 
   useEffect(() => {

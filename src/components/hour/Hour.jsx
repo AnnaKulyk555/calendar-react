@@ -9,7 +9,6 @@ const Hour = ({ dataHour, hourEvents, onDeleteEvent, isCurrentHour, minutes }) =
   const minuteStyle = {
     top: minutes,
   };
-
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
       <span
