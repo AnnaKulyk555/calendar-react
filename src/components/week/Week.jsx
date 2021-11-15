@@ -22,6 +22,7 @@ const Week = ({ weekDates, calendarEvents, onDeleteEvent }) => (
           dataDay={dayStart.getDate()}
           dayEvents={dayEvents}
           onDeleteEvent={onDeleteEvent}
+          currentMonth={dayStart.getMonth()}
         />
       );
     })}

@@ -5,7 +5,7 @@ import Hour from '../hour/Hour';
 
 import './day.scss';
 
-const Day = ({ dataDay, dayEvents, onDeleteEvent }) => {
+const Day = ({ dataDay, dayEvents, onDeleteEvent, currentMonth }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index);
@@ -15,7 +15,10 @@ const Day = ({ dataDay, dayEvents, onDeleteEvent }) => {
       {hours.map(hour => {
         // getting all events from the day we will render
         const hourEvents = dayEvents.filter(event => event.dateFrom.getHours() === hour);
-        const isCurrentHour = new Date().getDate() === dataDay && new Date().getHours() === hour;
+
+        const isCurrentDay =
+          currentMonth === new Date().getMonth() && new Date().getDate() === dataDay;
+        const isCurrentHour = isCurrentDay && new Date().getHours() === hour;
         return (
           <Hour
             key={dataDay + hour}
@@ -34,6 +37,7 @@ Day.propTypes = {
   dataDay: PropTypes.number.isRequired,
   dayEvents: PropTypes.arrayOf(PropTypes.object),
   onDeleteEvent: PropTypes.func.isRequired,
+  currentMonth: PropTypes.number.isRequired,
 };
 
 Day.defaultProps = {

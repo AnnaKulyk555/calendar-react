@@ -1,0 +1,11 @@
+.calendar {
+  &__time-slot {
+    &-minute {
+      display: block;
+      position: relative;
+      z-index: 3;
+      height: 1px;
+      background-color: red;
+    }
+  }
+}

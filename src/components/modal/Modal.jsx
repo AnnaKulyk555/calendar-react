@@ -29,8 +29,8 @@ const Modal = ({ isModalVisible, onHideModal, onCreateEvent }) => {
     setFormData(initialFormData);
   };
 
-  return (
-    <div className={isModalVisible ? 'modal overlay' : 'hidden'}>
+  return isModalVisible ? (
+    <div className="modal overlay">
       <div className="modal__content">
         <div className="create-event">
           <button onClick={onHideModal} className="create-event__close-btn">
@@ -83,7 +83,7 @@ const Modal = ({ isModalVisible, onHideModal, onCreateEvent }) => {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 Modal.propTypes = {
