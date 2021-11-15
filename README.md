@@ -1,7 +1,8 @@
 # Calendar
 
-## active link
-https://compassionate-galileo-4f7d0f.netlify.app/
+## Watch
+
+[active link](https://compassionate-galileo-4f7d0f.netlify.app/ 'netlify.com')
 
 ## The tech stack is:
 
@@ -15,8 +16,7 @@ Babel
 
 Webpack
 
-ESLint 
-
+ESLint
 
 HTML5
 
