@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 export const getWeekStartDate = date => {
-  const monday = moment(date).startOf('week').add(1, 'd').toDate();
+  const monday = moment(date).startOf('week').subtract(6, 'd').toDate();
   return monday;
 };
 
