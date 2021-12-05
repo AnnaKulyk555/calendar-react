@@ -22,8 +22,6 @@ HTML5
 
 CSS3
 
-Flexbox
-
 Sass (Scss)
 
 BEM methodology
