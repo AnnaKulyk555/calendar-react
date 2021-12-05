@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import MinuteHand from '../minuteHand/MinuteHand.jsx';
+import MinuteHand from '../minuteHand/MinuteHand';
 import Event from '../event/Event';
 import { formatMins } from '../../utils/dateUtils.js';
 
