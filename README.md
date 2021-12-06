@@ -2,7 +2,7 @@
 
 ## Watch
 
-[active link](https://compassionate-galileo-4f7d0f.netlify.app/ 'netlify.com')
+[active link](https://elegant-edison-e037a0.netlify.app/ 'netlify.com')
 
 ## The tech stack is:
 
